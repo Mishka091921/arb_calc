@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+interface CalculationResults {
+  arbValue: number;
+  isArb: boolean;
+  stakeUnder: number;
+  totalStake: number;
+  totalReturn: number;
+  profit: number;
+  roi: number;
+}
 
 export default function OverUnderCalculator() {
   const [oddOver, setOddOver] = useState("");
   const [oddUnder, setOddUnder] = useState("");
   const [stakeOver, setStakeOver] = useState("");
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<CalculationResults | null>(null);
 
   const calculate = () => {
     const oOver = parseFloat(oddOver);

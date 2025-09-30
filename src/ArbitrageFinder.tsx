@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+interface ArbitrageResult {
+  id: number;
+  oddA: number;
+  oddB: number;
+  arbValue: number;
+  isArb: boolean;
+}
 
 export default function ArbitrageFinder() {
   const [rawData, setRawData] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<ArbitrageResult[]>([]);
 
   const findArbitrage = () => {
     const lines = rawData.split("\n").map(line => line.trim()).filter(line => line !== "");
-    const parsedResults = [];
+    const parsedResults: ArbitrageResult[] = [];
 
     lines.forEach((line, index) => {
       const parts = line.split(/\s+/); // split by space or tab

@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+interface CalculationResults {
+  arbValue: number;
+  isArb: boolean;
+  stakeB: number;
+  totalStake: number;
+  totalReturn: number;
+  profit: number;
+  roi: number;
+}
 
 export default function ArbitrageCalculator() {
   const [oddA, setOddA] = useState("");
   const [oddB, setOddB] = useState("");
   const [stakeA, setStakeA] = useState("");
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<CalculationResults | null>(null);
 
   const calculateArbitrage = () => {
     const oA = parseFloat(oddA);
